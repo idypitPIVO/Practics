@@ -42,7 +42,7 @@ int main()
     int b = 0;
     int c = 0;
     std::cout << "Введите коэффициенты квадратных уравнений: " << endl;
-    std::cin >> a, b, c;
+    std::cin >> a >> b >> c;
     if (a == 0 && b == 0 && c == 0) {
         all_zero.Get_answer();
         all_zero.show();
