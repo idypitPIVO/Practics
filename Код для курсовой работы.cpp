@@ -1,7 +1,6 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 using namespace std;
-
 
 class  course_work {
 private:
@@ -35,7 +34,7 @@ public:
         else {
             cout << "Ответом является: Х = 0" << endl;
             if (A != 0) cout << "Уравнение имеет вид: " << A << "*x^2 = 0" << endl;
-            else cout << "Уравнение имеет вид: " << B << "*x = 0" << endl;          
+            else cout << "Уравнение имеет вид: " << B << "*x = 0" << endl;
         }
     }
 
@@ -43,7 +42,7 @@ public:
         if (A == 0) {
             cout << "Корень уравнения: " << (-1) * (C / B) << endl;
             if (C > 0) cout << "Уравнение имеет вид: " << B << "*x + " << C << " = 0" << endl;
-            else cout << "Уравнение имеет вид: " << B << "*x - " << abs(C) << " = 0" << endl;           
+            else cout << "Уравнение имеет вид: " << B << "*x - " << abs(C) << " = 0" << endl;
         }
         else if (B == 0) {
             double k = ((-1) * C) / A;
@@ -63,7 +62,7 @@ public:
             cout << "Корни уравнения: " << endl;
             cout << "X1 = 0" << endl << "X2 = " << x << endl;
             if (B > 0) cout << "Уравнение имеет вид: " << A << "*x^2 + " << B << "*x = 0 " << endl;
-            if (B < 0) cout << "Уравнение имеет вид: " << A << "*x^2 - " << abs(B) << "*x = 0 " << endl;           
+            if (B < 0) cout << "Уравнение имеет вид: " << A << "*x^2 - " << abs(B) << "*x = 0 " << endl;
         }
     }
 
@@ -98,39 +97,50 @@ public:
         if (B > 0 && C > 0) cout << "Уравнение имеет вид: " << A << "*x^2 + " << B << "*x + " << C << " = 0" << endl;
         if (B > 0 && C < 0) cout << "Уравнение имеет вид: " << A << "*x^2 + " << B << "*x - " << abs(C) << " = 0" << endl;
         if (B < 0 && C > 0) cout << "Уравнение имеет вид: " << A << "*x^2 - " << abs(B) << "*x + " << C << " = 0" << endl;
-        if (B < 0 && C < 0) cout << "Уравнение имеет вид: " << A << "*x^2 - " << abs(B) << "*x - " << abs(C) << " = 0" << endl;       
+        if (B < 0 && C < 0) cout << "Уравнение имеет вид: " << A << "*x^2 - " << abs(B) << "*x - " << abs(C) << " = 0" << endl;
     }
 };
 
 int main() {
     setlocale(LC_ALL, "rus");
     course_work term_paper;
-    float a, b, c;
+    float a, b, c, q;
+    int s;
+    int l = 0;
     int k = 0;
-    cout << "Введите коэффициенты квадратного уравнения: ";
-    cin >> a >> b >> c;
+    cout << "Введите желаемое количество квадратных уравнений: ";
+    cin >> s;
+    while (l < s) {
+        cout << "Введите коэффициенты квадратного уравнения: ";
+        cin >> a >> b >> c;
 
-    int array[3] = { a, b, c };
-    for (int i = 0; i < 3; i++) {
-        if (array[i] == 0) {
-            k++;
+        int array[3] = { a, b, c };
+        for (int i = 0; i < 3; i++) {
+            if (array[i] == 0) {
+                k++;
+            }
         }
-    }
-    
-    term_paper.get_a(a);
-    term_paper.get_b(b);
-    term_paper.get_c(c);
-    if (k == 3) {
-        term_paper.three_zero();
-    }
-    if (k == 2) {
-        term_paper.two_zero();
-    }
-    if (k == 1) {
-        term_paper.one_zero();
-    }
-    if (k == 0) {
-        term_paper.no_zeros();
+
+        term_paper.get_a(a);
+        term_paper.get_b(b);
+        term_paper.get_c(c);
+        if (k == 3) {
+            term_paper.three_zero();
+        }
+        if (k == 2) {
+            term_paper.two_zero();
+        }
+        if (k == 1) {
+            term_paper.one_zero();
+        }
+        if (k == 0) {
+            term_paper.no_zeros();
+        }
+        l++;
+        if (l < s) cout << "Было решено " << l << " уравнений. Введите цифру 0, если хотите закончить; и 1, если хотите продолжить : ";
+        else break;
+        cin >> q;
+        if (q == 0) break;
     }
     return 0;
 }
